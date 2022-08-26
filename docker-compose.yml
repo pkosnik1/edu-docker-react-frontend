@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3005:3000"
+    volumes:
+      - //c/_edu/repo/docker/react/frontend/src:/app/src
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3006:3000"
+    volumes:
+      - //c/_edu/repo/docker/react/frontend/src:/app/src
+    command: ["npm", "run", "test"]
